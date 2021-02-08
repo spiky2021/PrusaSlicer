@@ -403,11 +403,7 @@ int CLI::run(int argc, char **argv)
                 size_t num_objects = model.objects.size();
                 for (size_t i = 0; i < num_objects; ++ i) {
                     ModelObjectPtrs new_objects;
-                    ModelObject* front = model.objects.front();
-                    front->split(&new_objects);
-                    unsigned int counter = 1;
-                    for (ModelObject* m : new_objects)
-                        m->name = front->name + "_" + std::to_string(counter++);
+                    model.objects.front()->split(&new_objects);
                     model.delete_object(size_t(0));
                 }
             }
